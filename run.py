@@ -25,38 +25,39 @@ def sys():
     return render_template('sys.html',now_time=str(now_time).split('.')[0],start_time=start_time,
                            syss=syss)
 
+
 @app.route('/cpu/')
 def cpu():
     cpu={
-    'p_CPU':psutil.cpu_count(logical=False),
-    'CPU':psutil.cpu_count(),
-    'averageload_1':psutil.cpu_percent(interval=1),
-    'averageload_5':psutil.cpu_percent(interval=5),
-    'averageload_15':psutil.cpu_percent(interval=15),
-    'user':psutil.cpu_times_percent().user,
-    'system':psutil.cpu_times_percent().system,
-    'idle':psutil.cpu_times_percent().idle,
-    'nowfrequency':psutil.cpu_freq().current,
-    'minfrequency':psutil.cpu_freq().min,
-    'maxfrequency':psutil.cpu_freq().max
+        'cpu_percent_whole': psutil.cpu_percent(interval=1),
+        'cpu_percent_everyone': psutil.cpu_percent(interval=1, percpu=True),
+        'cpu_percent_everyone_len': len(psutil.cpu_percent(interval=1, percpu=True)),
+        'p_CPU': psutil.cpu_count(logical=False),
+        'CPU': psutil.cpu_count(),
+        'nowfrequency': psutil.cpu_freq().current,
+        'minfrequency': psutil.cpu_freq().min,
+        'maxfrequency': psutil.cpu_freq().max
     }
-    return render_template('cpu.html',cpu=cpu)
+    return render_template('cpu.html', cpu=cpu)
+
 
 @app.route('/ram/')
 def ram():
     ram={
-    'memmorySize':round(psutil.virtual_memory().total/(1024**3),3),
-    'available':round(psutil.virtual_memory().available/(1024**3),3),
-    'percent':psutil.virtual_memory().percent,
-    'used':round(psutil.virtual_memory().used/(1024**3),3),
-    'free':round(psutil.virtual_memory().free/(1024**3),3)
-    }
-    return render_template('ram.html',ram=ram)
+        'memmorySize':round(psutil.virtual_memory().total/(1024**3),3),
+        'available':round(psutil.virtual_memory().available/(1024**3),3),
+        'percent':psutil.virtual_memory().percent,
+        'used':round(psutil.virtual_memory().used/(1024**3),3),
+        'free':round(psutil.virtual_memory().free/(1024**3),3)
+        }
+    return render_template('ram.html', ram=ram)
+
 
 @app.route('/disk/')
 def disk():
     disks=psutil.disk_partitions()
     return render_template('disk.html',disks=disks)
+
 
 @app.route('/process/')
 def process():
@@ -66,5 +67,7 @@ def process():
          p=psutil.Process(i)
          processes.append((p.name(),p.status(),datetime.fromtimestamp(p.create_time()),round(p.memory_percent(),3)))
      return render_template('process.html',processes=processes)
+
+
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

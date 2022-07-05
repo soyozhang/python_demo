@@ -1,0 +1,35 @@
+## 程序简介
+
+* templates： 包含各类的页面
+* run： 包含各个routes代码
+* config： 配置
+* requirements: 所需环境
+
+程序以`flask+psutil`完成，`flask`是一种轻量级的web界面展示，
+`psutil`是对系统资源获取的方式，将获取的资源记录在web中展示
+
+`psutil`的详细介绍官网：https://psutil.readthedocs.io/en/latest/
+
+## 程序运行
+
+* requirements是将python虚拟环境，自动配置成`requirements.txt`文档，目的是为了方便
+后续有人使用时，能快捷的安装所需环境
+```
+    pip freeze > requirements.txt    可自动生成requirements.txt文档
+```
+
+```
+    pip install -r requirements.txt  可自动安装requirements.txt文档中所需文件
+```
+但是由于库的命名问题，可能出现搜索不到的情况，可自行搜索，大致分为以下，可自行搜索安装
+```
+flask
+Bootstrap
+psutil
+platform
+```
+
+* 安装前置环境后，使用命令运行，再打开链接地址：http://127.0.0.1:5000/cpu/
+```
+   python3 run.py 
+```
