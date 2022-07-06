@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="refresh" content="1" />
     <title>系统资源表</title>
+	<style>li{display:inline}</style>
 </head>
 <body>
 {% block content %}
- <div class="col-lg-10 col-lg-offset-1" style="background-color: beige">
-    <ul class="nav nav-pills " style="background-color: black">
-        <li role="presentation"><a href="/sys/">系统</a></li>
-        <li role="presentation"><a href="/cpu/">CPU</a></li>
-        <li role="presentation"><a href="/ram/">内存</a></li>
-        <li role="presentation"><a href="/disk/">硬盘</a></li>
-        <li role="presentation"><a href="/process/">进程</a></li>
+ <div class="col-lg-10 col-lg-offset-1" style="background-color: #f5f5f5" >
+    <ul class="nav nav-pills " style="background-color: #888888">
+        <li role="presentation"><a style="color: white; font-size:20px" href="/sys/">系统</a></li>
+        <li role="presentation"><a style="color: white; font-size:20px" href="/cpu/">CPU</a></li>
+        <li role="presentation"><a style="color: white; font-size:20px" href="/ram/">内存</a></li>
+        <li role="presentation"><a style="color: white; font-size:20px" href="/disk/">硬盘</a></li>
+        <li role="presentation"><a style="color: white; font-size:20px" href="/process/">进程</a></li>
     </ul>
 
 {% block new_content %}
