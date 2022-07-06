@@ -1,13 +1,15 @@
 from datetime import datetime
 import os
 import time
-
-from config import app
+from flask import Flask
+# from config import app
 from flask import render_template
 import psutil
 import socket
 import platform
 
+
+app = Flask(__name__)
 
 @app.route('/sys/')
 def sys():
@@ -70,4 +72,5 @@ def process():
 
 
 if __name__ == '__main__':
+    # app = Flask(__name__)
     app.run(debug=True)
